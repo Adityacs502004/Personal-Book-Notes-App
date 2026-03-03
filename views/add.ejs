@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add book</title>
+    <link rel="stylesheet" href="/Styles/main.css">
+</head>
+<body class="Body_addbook">
+    <div class="container">
+        <div class="border_glow"></div>
+        <div class="border_light"></div>
+        <div class="container_header">        
+            <div class="Book_icon"></div>
+            <div class="container_title">
+                <h1>Add a book</h1>
+            </div>
+        </div>
+        <form class="add_book_form" action="/add_book" method="post">
+            <% if(locals.book){ %>
+                <input type="text" name="edit_id" value="<%= book[0].id %>" hidden>
+                <% } %>
+            <label for="Book_title">Book Title*</label>
+            <input class="book_title" id="Book_title" type="text" placeholder="Enter Title" name="book_title" autofocus="on" autocomplete="off" <% if (locals.book){ %> 
+                value = "<%= book[0].book_name %>"
+                <% } %> required>
+            <br>
+            <label for="Author_title">Author*</label>
+            <input class="author_title" id="Author_title" type="text" placeholder="Enter Book Author" name="book_author" autocomplete="off" <% if (locals.book){ %> 
+                value = "<%= book[0].author_name %>"
+                <% } %> required>
+            <br>
+            <div class="form_submit">
+                <div class="book_gif_icon initial_icon"></div>
+                <button class="form_submit_btn" name="action" value="<%= button_text %>" type="submit"><%= button_text %></button>
+            </div>
+            
+        </form>
+        <br>
+        <form class="cancel_button_form" action="/" method="get">
+            <button class="cancel_btn" id="cancel_button" type="submit">Cancel</button>
+        </form>
+    </div>
+
+    <script>
+        
+        let form_submit_div = document.querySelector(".form_submit");
+        let book_gif_icon = document.querySelector(".book_gif_icon");
+        let cancel_btn = document.querySelector(".cancel_btn");
+        form_submit_div.addEventListener("mouseenter" , ()=>{
+            book_gif_icon.classList.add("book_gif");
+            book_gif_icon.classList.remove("initial_icon");
+            book_gif_icon.classList.remove("book_icon");
+            form_submit_div.classList.add("scale");
+        });
+        form_submit_div.addEventListener("mouseleave" , ()=>{
+            book_gif_icon.classList.remove("book_gif");
+            book_gif_icon.classList.add("book_icon");
+            form_submit_div.classList.remove("scale");
+        });
+
+        cancel_btn.addEventListener("mouseenter" , ()=>{
+            cancel_btn.classList.add("scale");
+        });
+        cancel_btn.addEventListener("mouseleave" , ()=>{
+            cancel_btn.classList.remove("scale");
+        });
+
+
+        let form_submit_btn = document.querySelector(".form_submit_btn");
+        
+
+    </script>
+</body>
+</html>

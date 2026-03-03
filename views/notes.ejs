@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book notes</title>
+    <link rel="stylesheet" href="/Styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body class="notes_body">
+    <form action="/submit_notes" class="notes_area" method="post">
+            <div class="notes_title">
+                <% if (locals.book_id){ %>
+                    <input name="book_id" value="<%= book_id %>" hidden>
+                    <% } %>
+                <% if(locals.book){ %>
+                        <h1><%= book.book_name %></h1>
+                        <div class="author">
+                            : <%= book.author_name %>
+                        </div>
+                    <% } %>
+            </div>
+            <div class="rate_this">Rate this book :</div>
+            <div class="rating">
+                <i class="fa-regular fa-star" id="1"></i>
+                <i class="fa-regular fa-star" id="2"></i>
+                <i class="fa-regular fa-star" id="3"></i>
+                <i class="fa-regular fa-star" id="4"></i>
+                <i class="fa-regular fa-star" id="5"></i>
+            </div>
+            <div class="notes_content">
+                <textarea name="book_notes" autocomplete="off" placeholder="Write notes ✍️ ..."><%= locals.notes ? notes.notes : ""%></textarea>
+            </div>
+            <br>
+            <input class="book_rating" name="rating" value="0" hidden>
+            <input class="recieved_rating" value="<%=locals.notes ? notes.rating : "0" %>" hidden>
+            <div class="save_btn">
+                <button class="save_notes" type="submit" >Save</button>
+            </div>
+        
+            
+    </form>
+    
+
+    <script>
+        let stars = document.querySelectorAll(".fa-star");
+        let rating = document.querySelector(".book_rating");
+        let selected_star;
+        let recieved_rating = parseInt(document.querySelector(".recieved_rating").value);
+        if (recieved_rating > 0){
+            selected_star = recieved_rating
+        }
+        else{
+            selected_star = 0;
+        }
+        
+
+        function fillstar(star_number){
+            stars.forEach((star , index) =>{
+                if (index < star_number){
+                    stars[index].classList.add("fa-solid");
+                    stars[index].classList.remove("fa-regular");
+                }
+                else{
+                   stars[index].classList.remove("fa-solid");
+                    stars[index].classList.add("fa-regular"); 
+                }
+            });
+        };
+
+        fillstar(selected_star);
+        rating.value = selected_star;
+
+        stars.forEach(function(star){
+            let id = parseInt(star.getAttribute("id"));
+            star.addEventListener("mouseenter", ()=>{
+                fillstar(id);
+            });
+            star.addEventListener("mouseleave" , ()=>{
+                fillstar(selected_star);
+            });
+
+            star.addEventListener("click" , ()=>{
+                let id = parseInt(star.getAttribute("id"));
+                selected_star = id;
+                fillstar(selected_star);
+                console.log(selected_star);
+                rating.value = selected_star;
+            });
+            
+        });
+
+        
+    </script>
+</body>
+</html>

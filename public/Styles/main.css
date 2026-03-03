@@ -1,0 +1,579 @@
+.body{
+    background-color: #eaf3ff;
+    display: grid;
+    min-height: 100vh;
+    margin: 0;
+    /* grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr); */
+}
+
+.Body_addbook{
+    background-color: #eaf3ff;
+    display: grid;
+    min-height: 100vh;
+    margin: 0;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+.notes_body{
+    min-height: 100vh;
+    background-color: #eaf3ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.body > *:not(.navbar){
+    margin-top: 150px;
+}
+
+.navbar{
+    height: 120px;
+    width: 100%;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: #eaf3ff;
+    display: flex;
+    z-index: 150;
+}
+
+.book_shelve_icon{
+    height: 40px;
+    width: 40px;  
+    background-image: url("/Images/books.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: 4vw;
+}
+
+.cover_img{
+    height: auto;
+    width: 180px;
+}
+
+.icon_heading{
+    grid-column: 2/6;
+    grid-row: 1 / 3;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    z-index: 100;
+}
+.heading{
+    position: relative;
+    top: 20px;
+}
+
+.para > h4{
+    text-decoration: underline;
+}
+.add_book{
+    grid-column-start: 7;
+    grid-row: 1 / 3;
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 14px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 8vh;
+    right: 8vw;
+    z-index: 100;
+}
+
+.delete_book{
+    height: 40px;
+    width: 40px;
+    background-image: url("/Images/bin.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 10vh;
+    left: 6vw;
+    z-index: 1;
+}
+
+.delete_book:hover{
+    height: 45px;
+    width: 45px;
+    background-image: url("/Images/trash-bin.gif");
+    z-index: 1;
+    
+}
+
+.delete_btn{
+   height: 40px;
+    width: 40px;
+    background-image: url("/Images/bin.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 10vh;
+    left: 6vw;
+    z-index: 1;
+    border : none;
+    background-color: transparent;
+    
+}
+
+.delete_btn:hover{
+    height: 45px;
+    width: 45px;
+    background-image: url("/Images/trash-bin.gif");
+    z-index: 1;
+    
+}
+.add_book > button{
+    height: 45px;
+    width: 160px;
+    font-size: large;
+    color: white;
+    font-weight: bolder;
+    background-color: #145dfd;
+    border: none;
+    border-radius: 9px;
+}
+.plus{
+    margin-right: 12px;
+    font-size: large;
+    color: white;
+    font-weight: bolder;
+    display: inline-block;
+}
+
+.total_book{
+    /* background-color: #145dfd; */
+    grid-row: 3;
+    grid-column: 2 /8;
+    display: flex;
+    /* align-items: center; */
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.book_list{
+    /* background-color: red; */
+    grid-row: 3 / -1;
+    grid-column: 2 / 8;
+    margin-top: 6vh;
+    display: flex;
+    /* height: fit-content; */
+}
+
+
+/* Animation */
+
+@keyframes add_book_animation {
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(90deg);
+    }
+}
+.add_book_btn{
+    transition: transform 1s ease-in-out;
+}
+
+
+.add_book_btn:hover{
+    transform: scale(1.1);
+}
+
+.add_book_btn:hover .plus{
+    animation: add_book_animation 2s ease-in-out 0s ;
+}
+
+/* Btn animation over */
+
+
+
+
+/* Add page */
+
+.container{
+    grid-row: 3/7;
+    grid-column: 4/6;
+    background-color: #F8FAFC;
+    /* margin-left: 6vw;
+    margin-right: 6vw; */
+    border-radius: 14px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    
+}
+
+.container_header{
+    position: relative;
+    height: 16.67%;
+    background-color: #F8FAFC;
+    display: flex;
+    align-items: center;  
+    /* border-radius: 14px; */
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    border-bottom: 1px solid #6b7382;
+}
+
+
+.Book_icon{
+    height: 40px;
+    width: 40px;
+    background-image: url("/Images/book_icon_foradddpage.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 1vw;
+    margin-left: 2vw;
+}
+.container_title{
+    margin-left: 1vw;
+    border-radius: 14px;
+}
+
+.add_book_form{
+    margin-left: 2vw;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.form_submit{
+    width: 7vw;
+}
+
+.add_book_form{
+    width: 100%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+
+.book_title , .author_title{
+    width: 70%;
+    height: 4vh;
+    border: none;
+    border-radius: 6px;
+    border-bottom: 2px blue solid;
+    border-right: 2px blue solid;
+    font-weight: bold;
+    font-size: large;
+}
+
+textarea:focus , input:focus{
+    outline: none;
+}
+
+.form_submit{
+    height: 45px;
+    width: fit-content;
+    border-radius: 9px;
+    background-color: #145dfd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 6px;
+}
+
+.form_submit_btn{
+    height: 45px;
+    width: 160px;
+    font-size: large;
+    color: white;
+    border-radius: 9px;
+    font-weight: bolder;
+    background-color: #145dfd;
+    border: none;
+}
+
+.book_gif{
+    height: 30px;
+    width: 30px;
+    background-image: url("/Images/Add_book_gif.gif");
+    background-size: contain;
+    background-repeat: no-repeat; 
+}
+
+.scale{
+    transition: transform 1s ease-in-out;
+    transform: scale(1.1);
+}
+
+.initial_icon{
+    height: 30px;
+    width: 30px;
+    background-image: url("/Images/Add_book_icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.book_icon{
+    height: 30px;
+    width: 30px;
+    background-image: url("/Images/Add_book_icon.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+
+.cancel_btn{
+    height: 45px;
+    width: 160px;
+    font-size: large;
+    color: white;
+    border-radius: 9px;
+    font-weight: bolder;
+    background-color: #e4e7ea;
+    border: none;
+    margin-left: 2vw;
+    color: #695e61;
+}
+
+
+.border_glow{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+    background-color: red;
+    z-index: -3;
+    inset: -4px;
+    border-radius: 16px;
+    background: conic-gradient(#f69d3c, #3f87a6  ,#f69d3c);
+}
+.border_light{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    padding: 4px;
+    background-color: red;
+    z-index: -4;
+    inset: -4px;
+    border-radius: 16px;
+    background: conic-gradient(#f69d3c, #3f87a6  ,#f69d3c);
+    filter: blur(1.2rem);
+}
+
+/* blogs */
+
+.book_list{
+    display: flex;
+    flex-direction: column;
+}
+
+.books_readed{
+    display: flex;
+    flex-direction: column;
+    /* background-color: red; */
+    width: 100%;
+    height: 100%;
+    gap: 4vh;
+    margin-top: 126px;
+}
+
+.blog_container{
+    width: 70%;
+    height: 28.87vh;
+    background-image: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    display: flex;
+    padding: 6px;
+    align-self: center;
+    border: 1px solid #0f3460;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.blog_content{
+    display: flex;
+    flex-direction: column;
+}
+
+.blog_title{
+    width: 25vw;
+    display: flex;
+    font-size: large;
+    font-weight: bolder;
+    font-size: 5vh;
+    position: relative;
+    top: 2vh;
+    left: 8vw;
+}
+
+.blog_author{
+    font-size: larger;
+    font-weight: bold;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    position: relative;
+    top: 3vh;
+    left: 15vw;
+}
+
+.add_recap_review{
+    display: flex;
+    height: 45px;
+    width: 160px;
+    border-radius: 9px;
+    font-weight: bolder;
+    background-color: #145dfd;
+    border: none;
+    position: relative;
+    top: 22vh;
+    right: 12vw;
+}
+
+.add_recap_review:hover{
+    transform: scale(1.1);
+}
+
+.notes_icon{
+    height: 35px;
+    width: 35px;
+    background-image: url("/Images/notes.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 12px;
+    margin-left: 8px;
+    margin-top: 8px;
+}
+
+.addnotes_btn{
+    height: 45px;
+    width: 160px;
+    font-size: large;
+    color: white;
+    border-radius: 9px;
+    font-weight: bolder;
+    background-color: #145dfd;
+    border: none;
+}
+
+
+
+.edit_title{
+    height: 9vh;
+    width: 9vw;
+    background-color: #d1dbe8;
+    display: flex;
+    position: relative;
+    top: 8vh;
+    align-self: flex-end;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.edit_title:hover{
+    transform: scale(1.1);
+}
+
+.edit_icon{
+    height: 40px;
+    width: 40px;
+    background-image: url("/Images/edit-title.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    left: 2.5vw;
+}
+
+.edit_btn{
+    height: 30px;
+    width: fit-content;
+    font-size: large;
+    font-weight: bold;
+    color: white;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    border: none;
+    background-color: #145dfd;
+    border-radius: 8px;
+}
+
+/* Notes page */
+
+.notes_area{
+    width: 50vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vh;
+}
+
+.rate_this{
+    height: 1vh;
+    align-self: flex-end;
+    width: fit-content;
+    position: relative;
+    right: 9vw;
+    font-weight: bold;
+
+}
+
+.rating{
+    height: fit-content;
+    width: 18vw;
+    /* background-color: #f69d3c; */
+    align-self: flex-end;
+}
+
+.fa-star{
+    font-size: 2rem;
+    color: #fdc700;
+}
+
+.author{
+    margin-left: 6vw;
+    margin-top: 0px;
+}
+
+.notes_title{
+    height: fit-content;
+    width: fit-content;
+    max-width: 36vw;
+    /* background-color: aqua; */
+}
+
+.notes_title > h1{
+    text-decoration: underline;
+}
+
+.notes_content{
+    flex: 1;
+    min-height: 54vh;
+    width: 50vw; 
+    
+    /* display: flex; */
+}
+
+.notes_content > textarea{
+    padding: 16px;
+    resize: none;
+    width: 100%;
+    height: 100%;
+    background-color: #e4e7ea;
+    border: 1px solid rgb(141, 141, 170);;
+    font-size: large;
+    border-radius: 12px;
+    flex: 1;
+}
+.save_btn{
+    margin-bottom: 2vh;
+}
+
+.save_notes{
+    height: 4vh;
+    width: 8vw;
+    background-color: #145dfd;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-size: large;
+    font-weight: bold;
+}

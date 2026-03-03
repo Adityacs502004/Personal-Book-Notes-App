@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book reviewer</title>
+    <link rel="stylesheet" href="/Styles/main.css">
+</head>
+<body class="body">
+    <div class="navbar">
+        <div class="icon_heading">
+        <div class="book_shelve_icon"></div>
+        <div class="heading">
+            <h1>My Book Reviews </h1>
+            <div class="para">
+                <h4>Personal book reading, review and recap page</h4>
+            </div>
+        </div>
+        
+        
+    </div>
+    
+    <form class="add_book" action="/add_page" method="get">
+        <button class="add_book_btn" type="submit">
+            <span class="plus">+</span>
+            Add Book
+        </button>
+    </form>
+    </div>
+    
+    
+    <div class="book_list">
+        <div class="reading_list">
+            <h1>Reading list</h1>
+        </div>
+        <br>
+        <div class="total_book">Total books : <%= total %></div>
+        <div class="books_readed">
+                <%for (let i = 0 ; i < total ; i++){%>
+                <div class="blog_container">
+                    <div class="cover_img">
+                        <img src= "https://covers.openlibrary.org/b/id/<%=book[i].cover_id%>-M.jpg" >
+                        
+                    </div>
+                    <% if (locals.book){ %>
+                                <div class="blog_content">
+                                <div class="blog_title">
+                                <%= book[i].book_name %>
+                            </div>
+                            <div class="blog_author">
+                                :<%= book[i].author_name %>
+                            </div>
+                        </div>
+                    <% } %>
+                    
+                    
+                        <form action="/notes" method="post">
+                            <div class="add_recap_review">
+                                <input name ="add_notes_id" value="<%= book[i].id %>" hidden>
+                                <div class="notes_icon"></div>
+                                <button class="addnotes_btn" type="submit">Add / Read notes</button>
+                            </div>     
+                        </form>
+
+
+                        <form action="/edit_title" method="post">
+                            <div class="edit_title">
+                                <input name="edit_notes_id" value="<%= book[i].id %>" hidden>
+                                <label for="edit_title_author">
+                                    <div id="edit_title_author" class="edit_icon"></div>
+                                    <br>
+                                    <div id="edit_title_author" class="edit_btn">
+                                        <button class="edit_btn" type="submit">Edit Title/Author</button>
+                                    </div>
+                                </label>
+                                
+                            </div>                           
+                        </form>
+                        <form action="/delete" method="post">
+                                <input name="delete_id" value="<%= book[i].id %>" hidden>
+                                <button class="delete_btn" type="submit">
+                                </button>
+                        </form>
+                        
+                </div>
+            <% } %>
+        
+        
+
+    </div>
+    
+</body>
+</html>
